@@ -96,16 +96,14 @@ public final class MyOkhttpDownLoader implements Downloader {
                 assert ua != null;
                 mRequestBuilder.addHeader("User-Agent", ua);
             }else {
-                mRequestBuilder.addHeader("User-Agent", UA.randomOne());
+                String mobile_UA = "Dalvik/2.1.0 (Linux; U; Android 13; M2102J2SC Build/TKQ1.220829.002)";
+                mRequestBuilder.addHeader("User-Agent", mobile_UA);
             }
             if(!TextUtils.isEmpty(referer)){
                 assert referer != null;
                 mRequestBuilder.addHeader("Referer", referer);
             }
         }
-        URL imgUrl = new URL(url);
-        String host = imgUrl.getHost();
-        mRequestBuilder.addHeader("Host", host);
         return client.newCall(mRequestBuilder.build()).execute();
     }
 
